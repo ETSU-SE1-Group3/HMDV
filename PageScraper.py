@@ -29,7 +29,7 @@ def pageScrape( url):
     #get html from webpage
     r = requests.get(url)
     #create soup object to manipulate
-    soup = BeautifulSoup(r.content, "lxml")
+    soup = BeautifulSoup(r.content)
     
     #find normal url for page (does not include search id)
     try:
@@ -39,7 +39,7 @@ def pageScrape( url):
                 url = home+item.get("href")
                 
         r = requests.get(url)
-        soup = BeautifulSoup(r.content, "lxml")
+        soup = BeautifulSoup(r.content)
     except:
         print("URL Not Found")
             
@@ -228,7 +228,7 @@ def pageScrape( url):
     
     #append to json file  
     #to use, change the first open parameter with location of JSON
-    with open('/Users/jarredwininger/resource.json', 'a') as f:
+    with open('C:/Users/Matthew/resource.json', 'a') as f:
         json.dump(resourceData, f)
         f.write(os.linesep)
     
